@@ -90,15 +90,15 @@ const Index = () => {
       <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black mb-12">
         <div className="absolute inset-0">
           <img 
-            src="https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/36e9ec69-aa7d-45f9-bf1e-dfad9b55484c.jpg" 
-            alt="Security Control Room"
+            src="https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/a45315f2-a71a-4a8e-9442-bed7eae970da.jpg" 
+            alt="Security Systems"
             className="w-full h-full object-cover opacity-30"
           />
         </div>
         <div className="relative container mx-auto px-4 py-20">
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Профессиональная система
+              Профессиональные системы
               <span className="text-primary"> безопасности</span>
             </h1>
             <p className="text-xl text-gray-300 mb-12 leading-relaxed">
