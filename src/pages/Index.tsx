@@ -246,7 +246,7 @@ const Index = () => {
               </div>
               <div className="pt-4 border-t border-gray-200">
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bold text-gray-900">от 65 000 ₽</span>
+                  <span className="text-3xl font-bold text-gray-900">от 120 000 ₽</span>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90">
                   <Icon name="ShoppingCart" className="mr-2 h-4 w-4" />
