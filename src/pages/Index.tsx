@@ -13,26 +13,42 @@ interface Camera {
   image: string;
 }
 
+interface Doorbell {
+  id: number;
+  name: string;
+  location: string;
+  status: 'active' | 'offline';
+  image: string;
+}
+
+interface WifiNetwork {
+  id: number;
+  name: string;
+  devices: number;
+  signal: number;
+  image: string;
+}
+
 const Index = () => {
   const [selectedCamera, setSelectedCamera] = useState<number | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
   const cameras: Camera[] = [
-    { id: 1, name: 'Камера 1', location: 'Главный вход', status: 'active', image: 'https://v3b.fal.media/files/b/tiger/r-JDlukzVa1jLl7xJcLok_output.png' },
-    { id: 2, name: 'Камера 2', location: 'Парковка', status: 'alert', image: 'https://v3b.fal.media/files/b/tiger/r-JDlukzVa1jLl7xJcLok_output.png' },
-    { id: 3, name: 'Камера 3', location: 'Склад', status: 'active', image: 'https://v3b.fal.media/files/b/tiger/r-JDlukzVa1jLl7xJcLok_output.png' },
-    { id: 4, name: 'Камера 4', location: 'Офис', status: 'offline', image: 'https://v3b.fal.media/files/b/tiger/r-JDlukzVa1jLl7xJcLok_output.png' },
+    { id: 1, name: 'Камера 1', location: 'Главный вход', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
+    { id: 2, name: 'Камера 2', location: 'Парковка', status: 'alert', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
+    { id: 3, name: 'Камера 3', location: 'Склад', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
+    { id: 4, name: 'Камера 4', location: 'Офис', status: 'offline', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
   ];
 
-  const doorbells = [
-    { id: 1, name: 'Домофон 1', location: 'Главная дверь', status: 'active' },
-    { id: 2, name: 'Домофон 2', location: 'Боковой вход', status: 'active' },
+  const doorbells: Doorbell[] = [
+    { id: 1, name: 'Домофон 1', location: 'Главная дверь', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/67581b97-a608-4904-a013-2dd8b4851469.jpg' },
+    { id: 2, name: 'Домофон 2', location: 'Боковой вход', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/67581b97-a608-4904-a013-2dd8b4851469.jpg' },
   ];
 
-  const wifiNetworks = [
-    { id: 1, name: 'Office WiFi', devices: 12, signal: 95 },
-    { id: 2, name: 'Guest WiFi', devices: 5, signal: 82 },
-    { id: 3, name: 'Security WiFi', devices: 8, signal: 98 },
+  const wifiNetworks: WifiNetwork[] = [
+    { id: 1, name: 'Office WiFi', devices: 12, signal: 95, image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/a9945c81-460d-4214-adfb-d462f47ee867.jpg' },
+    { id: 2, name: 'Guest WiFi', devices: 5, signal: 82, image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/a9945c81-460d-4214-adfb-d462f47ee867.jpg' },
+    { id: 3, name: 'Security WiFi', devices: 8, signal: 98, image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/a9945c81-460d-4214-adfb-d462f47ee867.jpg' },
   ];
 
   const getStatusColor = (status: string) => {
@@ -143,28 +159,35 @@ const Index = () => {
           <TabsContent value="doorbell" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {doorbells.map((doorbell) => (
-                <Card key={doorbell.id} className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Icon name="DoorOpen" className="h-6 w-6 text-primary" />
+                <Card key={doorbell.id} className="p-0 overflow-hidden hover:shadow-lg transition-shadow">
+                  <img 
+                    src={doorbell.image} 
+                    alt={doorbell.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Icon name="DoorOpen" className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg text-gray-900">{doorbell.name}</h3>
+                          <p className="text-sm text-gray-600">{doorbell.location}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-lg text-gray-900">{doorbell.name}</h3>
-                        <p className="text-sm text-gray-600">{doorbell.location}</p>
-                      </div>
+                      <div className={`w-3 h-3 rounded-full ${getStatusColor(doorbell.status)}`} />
                     </div>
-                    <div className={`w-3 h-3 rounded-full ${getStatusColor(doorbell.status)}`} />
-                  </div>
-                  <div className="space-y-2">
-                    <Button className="w-full bg-primary hover:bg-primary/90">
-                      <Icon name="Video" className="mr-2 h-4 w-4" />
-                      Открыть видео
-                    </Button>
-                    <Button variant="outline" className="w-full">
-                      <Icon name="Volume2" className="mr-2 h-4 w-4" />
-                      Аудиосвязь
-                    </Button>
+                    <div className="space-y-2">
+                      <Button className="w-full bg-primary hover:bg-primary/90">
+                        <Icon name="Video" className="mr-2 h-4 w-4" />
+                        Открыть видео
+                      </Button>
+                      <Button variant="outline" className="w-full">
+                        <Icon name="Volume2" className="mr-2 h-4 w-4" />
+                        Аудиосвязь
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               ))}
@@ -174,24 +197,31 @@ const Index = () => {
           <TabsContent value="wifi" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {wifiNetworks.map((network) => (
-                <Card key={network.id} className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Icon name="Wifi" className="h-6 w-6 text-primary" />
+                <Card key={network.id} className="p-0 overflow-hidden hover:shadow-lg transition-shadow">
+                  <img 
+                    src={network.image} 
+                    alt={network.name}
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <Icon name="Wifi" className="h-6 w-6 text-primary" />
+                      </div>
+                      <Badge variant="outline" className="text-xs">{network.signal}%</Badge>
                     </div>
-                    <Badge variant="outline" className="text-xs">{network.signal}%</Badge>
-                  </div>
-                  <h3 className="font-semibold text-lg text-gray-900 mb-2">{network.name}</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Подключено устройств</span>
-                      <span className="font-semibold text-gray-900">{network.devices}</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="bg-primary h-2 rounded-full transition-all duration-300" 
-                        style={{ width: `${network.signal}%` }}
-                      />
+                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{network.name}</h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-gray-600">Подключено устройств</span>
+                        <span className="font-semibold text-gray-900">{network.devices}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="bg-primary h-2 rounded-full transition-all duration-300" 
+                          style={{ width: `${network.signal}%` }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </Card>
