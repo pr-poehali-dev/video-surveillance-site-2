@@ -1,37 +1,9 @@
 import { useState, FormEvent } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
-interface Camera {
-  id: number;
-  name: string;
-  location: string;
-  status: 'active' | 'alert' | 'offline';
-  image: string;
-}
-
-interface Doorbell {
-  id: number;
-  name: string;
-  location: string;
-  status: 'active' | 'offline';
-  image: string;
-}
-
-interface WifiNetwork {
-  id: number;
-  name: string;
-  devices: number;
-  signal: number;
-  image: string;
-}
 
 const Index = () => {
-  const [selectedCamera, setSelectedCamera] = useState<number | null>(null);
-  const [zoomLevel, setZoomLevel] = useState(1);
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -47,42 +19,6 @@ const Index = () => {
     setIsSubmitting(false);
     
     setTimeout(() => setSubmitSuccess(false), 5000);
-  };
-
-  const cameras: Camera[] = [
-    { id: 1, name: 'Камера 1', location: 'Главный вход', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
-    { id: 2, name: 'Камера 2', location: 'Парковка', status: 'alert', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
-    { id: 3, name: 'Камера 3', location: 'Склад', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
-    { id: 4, name: 'Камера 4', location: 'Офис', status: 'offline', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/aa1c621f-204d-41ff-95f6-073f4c588a3f.jpg' },
-  ];
-
-  const doorbells: Doorbell[] = [
-    { id: 1, name: 'Домофон 1', location: 'Главная дверь', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/67581b97-a608-4904-a013-2dd8b4851469.jpg' },
-    { id: 2, name: 'Домофон 2', location: 'Боковой вход', status: 'active', image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/67581b97-a608-4904-a013-2dd8b4851469.jpg' },
-  ];
-
-  const wifiNetworks: WifiNetwork[] = [
-    { id: 1, name: 'Office WiFi', devices: 12, signal: 95, image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/a9945c81-460d-4214-adfb-d462f47ee867.jpg' },
-    { id: 2, name: 'Guest WiFi', devices: 5, signal: 82, image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/a9945c81-460d-4214-adfb-d462f47ee867.jpg' },
-    { id: 3, name: 'Security WiFi', devices: 8, signal: 98, image: 'https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/a9945c81-460d-4214-adfb-d462f47ee867.jpg' },
-  ];
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active': return 'bg-green-500';
-      case 'alert': return 'bg-orange-500 animate-pulse';
-      case 'offline': return 'bg-gray-400';
-      default: return 'bg-gray-400';
-    }
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'active': return 'Активна';
-      case 'alert': return 'Тревога';
-      case 'offline': return 'Офлайн';
-      default: return 'Неизвестно';
-    }
   };
 
   return (
@@ -139,163 +75,137 @@ const Index = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Панель управления</h2>
-          <p className="text-gray-600">Управляйте всеми системами безопасности в одном месте</p>
+        <div className="mb-8 text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-2">Готовые комплекты</h2>
+          <p className="text-gray-600 text-lg">Подберите оптимальное решение для вашего объекта</p>
         </div>
 
-        <Tabs defaultValue="surveillance" className="w-full">
-          <TabsList className="grid w-full max-w-md grid-cols-3 mb-8">
-            <TabsTrigger value="surveillance" className="data-[state=active]:bg-primary data-[state=active]:text-white">
-              <Icon name="Camera" className="mr-2 h-4 w-4" />
-              Видеонаблюдение
-            </TabsTrigger>
-            <TabsTrigger value="doorbell" className="data-[state=active]:bg-primary data-[state=active]:text-white">
-              <Icon name="DoorOpen" className="mr-2 h-4 w-4" />
-              Домофония
-            </TabsTrigger>
-            <TabsTrigger value="wifi" className="data-[state=active]:bg-primary data-[state=active]:text-white">
-              <Icon name="Wifi" className="mr-2 h-4 w-4" />
-              Wi-Fi сети
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="surveillance" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {cameras.map((camera) => (
-                <Card 
-                  key={camera.id} 
-                  className="p-0 overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-primary"
-                  onClick={() => setSelectedCamera(camera.id)}
-                >
-                  <div className="relative">
-                    <img 
-                      src={camera.image} 
-                      alt={camera.name}
-                      className="w-full h-64 object-cover"
-                      style={{ transform: selectedCamera === camera.id ? `scale(${zoomLevel})` : 'scale(1)', transition: 'transform 0.3s ease' }}
-                    />
-                    <div className={`absolute top-3 right-3 w-3 h-3 rounded-full ${getStatusColor(camera.status)}`} />
-                    {camera.status === 'alert' && (
-                      <Badge className="absolute top-3 left-3 bg-orange-500 text-white animate-pulse">
-                        <Icon name="Bell" className="mr-1 h-3 w-3" />
-                        Оповещение
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="p-4 bg-white">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold text-lg text-gray-900">{camera.name}</h3>
-                      <Badge variant="outline" className="text-xs">{getStatusText(camera.status)}</Badge>
-                    </div>
-                    <p className="text-gray-600 text-sm mb-3 flex items-center">
-                      <Icon name="MapPin" className="mr-1 h-4 w-4 text-gray-400" />
-                      {camera.location}
-                    </p>
-                    {selectedCamera === camera.id && (
-                      <div className="flex items-center gap-2 pt-3 border-t">
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setZoomLevel(Math.max(1, zoomLevel - 0.5));
-                          }}
-                        >
-                          <Icon name="ZoomOut" className="h-4 w-4" />
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setZoomLevel(Math.min(3, zoomLevel + 0.5));
-                          }}
-                        >
-                          <Icon name="ZoomIn" className="h-4 w-4" />
-                        </Button>
-                        <span className="text-xs text-gray-500 ml-2">Зум: {zoomLevel.toFixed(1)}x</span>
-                      </div>
-                    )}
-                  </div>
-                </Card>
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Card className="p-0 overflow-hidden hover:shadow-xl transition-all border-2 hover:border-primary">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white">
+              <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                <Icon name="Building2" className="h-8 w-8" />
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Комплект для офиса</h3>
+              <p className="text-blue-100 text-sm">Надёжная защита вашего бизнеса</p>
             </div>
-          </TabsContent>
-
-          <TabsContent value="doorbell" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {doorbells.map((doorbell) => (
-                <Card key={doorbell.id} className="p-0 overflow-hidden hover:shadow-lg transition-shadow">
-                  <img 
-                    src={doorbell.image} 
-                    alt={doorbell.name}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                          <Icon name="DoorOpen" className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-lg text-gray-900">{doorbell.name}</h3>
-                          <p className="text-sm text-gray-600">{doorbell.location}</p>
-                        </div>
-                      </div>
-                      <div className={`w-3 h-3 rounded-full ${getStatusColor(doorbell.status)}`} />
-                    </div>
-                    <div className="space-y-2">
-                      <Button className="w-full bg-primary hover:bg-primary/90">
-                        <Icon name="Video" className="mr-2 h-4 w-4" />
-                        Открыть видео
-                      </Button>
-                      <Button variant="outline" className="w-full">
-                        <Icon name="Volume2" className="mr-2 h-4 w-4" />
-                        Аудиосвязь
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+            <div className="p-6 bg-white">
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">4 камеры видеонаблюдения</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Видеорегистратор</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Жёсткий диск</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Настройка приложения</span>
+                </li>
+              </ul>
+              <div className="pt-4 border-t border-gray-200">
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-3xl font-bold text-gray-900">от 45 000 ₽</span>
+                </div>
+                <Button className="w-full bg-primary hover:bg-primary/90">
+                  <Icon name="ShoppingCart" className="mr-2 h-4 w-4" />
+                  Заказать комплект
+                </Button>
+              </div>
             </div>
-          </TabsContent>
+          </Card>
 
-          <TabsContent value="wifi" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {wifiNetworks.map((network) => (
-                <Card key={network.id} className="p-0 overflow-hidden hover:shadow-lg transition-shadow">
-                  <img 
-                    src={network.image} 
-                    alt={network.name}
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Icon name="Wifi" className="h-6 w-6 text-primary" />
-                      </div>
-                      <Badge variant="outline" className="text-xs">{network.signal}%</Badge>
-                    </div>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{network.name}</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">Подключено устройств</span>
-                        <span className="font-semibold text-gray-900">{network.devices}</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="bg-primary h-2 rounded-full transition-all duration-300" 
-                          style={{ width: `${network.signal}%` }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+          <Card className="p-0 overflow-hidden hover:shadow-xl transition-all border-2 hover:border-primary">
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-6 text-white">
+              <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                <Icon name="Warehouse" className="h-8 w-8" />
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Комплект для склада</h3>
+              <p className="text-orange-100 text-sm">Для коммерческих помещений</p>
             </div>
-          </TabsContent>
-        </Tabs>
+            <div className="p-6 bg-white">
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">20 камер видеонаблюдения</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Коммутатор</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Монитор</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Установка и подключение</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Настройка системы</span>
+                </li>
+              </ul>
+              <div className="pt-4 border-t border-gray-200">
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-3xl font-bold text-gray-900">от 180 000 ₽</span>
+                </div>
+                <Button className="w-full bg-primary hover:bg-primary/90">
+                  <Icon name="ShoppingCart" className="mr-2 h-4 w-4" />
+                  Заказать комплект
+                </Button>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-0 overflow-hidden hover:shadow-xl transition-all border-2 hover:border-primary">
+            <div className="bg-gradient-to-br from-green-500 to-green-600 p-6 text-white">
+              <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                <Icon name="Home" className="h-8 w-8" />
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Комплект для дома</h3>
+              <p className="text-green-100 text-sm">Полная защита вашего дома</p>
+            </div>
+            <div className="p-6 bg-white">
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">5 камер видеонаблюдения</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Видеорегистратор</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Жёсткий диск</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Домофон на калитку</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Wi-Fi сеть в доме и на территории</span>
+                </li>
+              </ul>
+              <div className="pt-4 border-t border-gray-200">
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-3xl font-bold text-gray-900">от 65 000 ₽</span>
+                </div>
+                <Button className="w-full bg-primary hover:bg-primary/90">
+                  <Icon name="ShoppingCart" className="mr-2 h-4 w-4" />
+                  Заказать комплект
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </div>
 
         <div className="mt-20 mb-12">
           <div className="text-center mb-12">
