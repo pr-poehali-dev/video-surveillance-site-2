@@ -172,28 +172,78 @@ const Index = () => {
               <p className="text-green-100 text-sm">Полная защита вашего дома</p>
             </div>
             <div className="p-6 bg-white">
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-3">
-                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">5 камер видеонаблюдения</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Видеорегистратор</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Жёсткий диск</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Домофон на калитку</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Wi-Fi сеть в доме и на территории</span>
-                </li>
-              </ul>
+              <div className="space-y-5 mb-6">
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <Icon name="Camera" className="h-5 w-5 text-green-600" />
+                    Комплект видеонаблюдения
+                  </h4>
+                  <ul className="space-y-2 ml-7">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">4 камеры видеонаблюдения</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Жёсткий диск</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Видеорегистратор</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <Icon name="DoorOpen" className="h-5 w-5 text-green-600" />
+                    Домофон
+                  </h4>
+                  <ul className="space-y-2 ml-7">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Вызывная панель на калитку</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Панель домофона в дом</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Настройка приложения</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Открытие калитки с приложения</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <Icon name="Wifi" className="h-5 w-5 text-green-600" />
+                    Wi-Fi сеть в доме
+                  </h4>
+                  <ul className="space-y-2 ml-7">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">2 точки доступа в доме</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">1 уличная точка доступа</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Настройка единой сети</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span className="text-gray-700 text-sm">Бесшовное покрытие</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div className="pt-4 border-t border-gray-200">
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-3xl font-bold text-gray-900">от 65 000 ₽</span>
