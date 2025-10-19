@@ -54,8 +54,8 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <Icon name="Phone" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href="tel:+79991234567" className="hover:text-primary transition-colors">
-                    +7 (999) 123-45-67
+                  <a href="tel:+79533555693" className="hover:text-primary transition-colors">
+                    +7 (953) 355-56-93
                   </a>
                   <p className="text-sm text-gray-500">Круглосуточно</p>
                 </div>
@@ -68,7 +68,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Icon name="MapPin" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span>г. Москва, ул. Примерная, д. 123</span>
+                <span>г. Санкт-Петербург</span>
               </li>
             </ul>
           </div>
