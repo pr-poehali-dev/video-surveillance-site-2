@@ -35,9 +35,9 @@ const Index = () => {
           <div className="max-w-4xl">
             <div className="mb-8">
               <img 
-                src="https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/8816d5da-b556-4dcf-ba99-57cf7900b72e.jpg" 
-                alt="SecureWatch Logo"
-                className="h-20 md:h-24 w-auto"
+                src="https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/21dc8471-fff5-4fcf-9a61-ca018af607d8.jpg" 
+                alt="Системы безопасности"
+                className="h-24 md:h-28 w-auto"
               />
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
