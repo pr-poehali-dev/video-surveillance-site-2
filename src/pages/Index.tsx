@@ -37,7 +37,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/projects/83125d48-51ba-44f6-8ca0-22911d5d266b/files/21dc8471-fff5-4fcf-9a61-ca018af607d8.jpg" 
                 alt="Системы безопасности"
-                className="h-32 md:h-36 w-32 md:w-36 rounded-full object-cover shadow-2xl shadow-primary/50 ring-4 ring-white/20"
+                className="h-32 md:h-36 w-32 md:w-36 rounded-full object-cover shadow-2xl shadow-primary/50 ring-4 ring-white/20 transition-all duration-300 hover:scale-110 hover:shadow-primary/80 hover:ring-primary/40 cursor-pointer"
               />
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
