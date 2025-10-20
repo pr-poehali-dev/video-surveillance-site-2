@@ -6,7 +6,7 @@ from typing import Dict, Any
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
-    Business: Отправка заявок с сайта в Telegram
+    Business: Отправка заявок с сайта в Telegram (обновлено)
     Args: event - dict с httpMethod, body (name, phone, message/comment, package)
           context - объект с request_id
     Returns: HTTP response dict
@@ -35,8 +35,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'body': json.dumps({'error': 'Method not allowed'})
         }
     
-    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
-    chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+    chat_id = os.environ.get('TELEGRAM_CHAT_ID', '')
     
     if not bot_token or not chat_id:
         return {
@@ -46,6 +46,18 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 'Access-Control-Allow-Origin': '*'
             },
             'body': json.dumps({'error': 'Telegram credentials not configured'})
+        }
+    
+    try:
+        chat_id_int = int(chat_id)
+    except ValueError:
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({'error': 'Invalid CHAT_ID format'})
         }
     
     body_data = json.loads(event.get('body', '{}'))
@@ -71,13 +83,14 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     text = '\n'.join(text_parts)
     
     url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
-    data = urllib.parse.urlencode({
-        'chat_id': chat_id,
-        'text': text,
-        'parse_mode': 'HTML'
-    }).encode('utf-8')
+    payload = {
+        'chat_id': chat_id_int,
+        'text': text
+    }
+    data = json.dumps(payload).encode('utf-8')
     
     req = urllib.request.Request(url, data=data, method='POST')
+    req.add_header('Content-Type', 'application/json')
     
     try:
         with urllib.request.urlopen(req, timeout=10) as response:
