@@ -447,6 +447,126 @@ const Index = () => {
                 <p className="text-sm text-gray-500">3 недели назад</p>
               </div>
             </Card>
+
+            <Card className="p-6 hover:shadow-xl transition-shadow">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                  ЕВ
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-900">Елена Волкова</h3>
+                  <p className="text-sm text-gray-600">Управляющая офисом</p>
+                  <div className="flex gap-1 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Icon key={i} name="Star" className="h-4 w-4 text-primary fill-primary" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Установили систему контроля доступа и камеры в офисе. Теперь знаем, кто и когда заходит. 
+                Приложение простое и понятное, записи можно посмотреть за любой день. Очень довольны!
+              </p>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-500">5 дней назад</p>
+              </div>
+            </Card>
+
+            <Card className="p-6 hover:shadow-xl transition-shadow">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                  ИН
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-900">Игорь Новиков</h3>
+                  <p className="text-sm text-gray-600">Владелец автосервиса</p>
+                  <div className="flex gap-1 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Icon key={i} name="Star" className="h-4 w-4 text-primary fill-primary" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Поставили 12 камер по периметру автосервиса. Качество 4K, детекция движения работает чётко. 
+                Ребята сделали всё профессионально, кабели спрятали, настроили удалённый доступ. Спасибо!
+              </p>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-500">2 месяца назад</p>
+              </div>
+            </Card>
+
+            <Card className="p-6 hover:shadow-xl transition-shadow">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                  ОР
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-900">Ольга Романова</h3>
+                  <p className="text-sm text-gray-600">Владелица магазина</p>
+                  <div className="flex gap-1 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Icon key={i} name="Star" className="h-4 w-4 text-primary fill-primary" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                В магазине установили видеонаблюдение в торговом зале и на складе. Очень помогает контролировать работу. 
+                Монтаж быстрый, цена честная. Однозначно буду рекомендовать!
+              </p>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-500">1 неделя назад</p>
+              </div>
+            </Card>
+
+            <Card className="p-6 hover:shadow-xl transition-shadow">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                  СК
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-900">Сергей Кузнецов</h3>
+                  <p className="text-sm text-gray-600">Коттеджный посёлок</p>
+                  <div className="flex gap-1 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Icon key={i} name="Star" className="h-4 w-4 text-primary fill-primary" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Сделали комплексную систему для коттеджного посёлка: видеонаблюдение на въезде, Wi-Fi на территории, 
+                домофония для каждого дома. Всё работает как часы. Профессионалы своего дела!
+              </p>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-500">1 месяц назад</p>
+              </div>
+            </Card>
+
+            <Card className="p-6 hover:shadow-xl transition-shadow">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary to-orange-600 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                  ТБ
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg text-gray-900">Татьяна Белова</h3>
+                  <p className="text-sm text-gray-600">Директор гостиницы</p>
+                  <div className="flex gap-1 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Icon key={i} name="Star" className="h-4 w-4 text-primary fill-primary" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Поставили камеры в коридорах и на парковке, настроили Wi-Fi для гостей. Система надёжная, 
+                всё записывается и хранится месяц. Поддержка всегда на связи. Большое спасибо команде!
+              </p>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-500">3 недели назад</p>
+              </div>
+            </Card>
           </div>
         </div>
 
