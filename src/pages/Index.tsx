@@ -541,7 +541,7 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 <Icon name="ShieldCheck" className="h-7 w-7 text-primary" />
-                SecureWatch
+                Securny
               </h3>
               <p className="text-gray-400 mb-4 leading-relaxed">
                 Профессиональные системы безопасности для дома, офиса и промышленных объектов
@@ -587,21 +587,21 @@ const Index = () => {
                 <li className="flex items-start gap-2">
                   <Icon name="Phone" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <a href="tel:+79991234567" className="hover:text-primary transition-colors">
-                      +7 (999) 123-45-67
+                    <a href="tel:+79533555693" className="hover:text-primary transition-colors">
+                      +7 (953) 355-56-93
                     </a>
                     <p className="text-sm text-gray-500">Круглосуточно</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2">
                   <Icon name="Mail" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <a href="mailto:info@securewatch.ru" className="hover:text-primary transition-colors">
-                    info@securewatch.ru
+                  <a href="mailto:info@ssbspb.ru" className="hover:text-primary transition-colors">
+                    info@ssbspb.ru
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
                   <Icon name="MapPin" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span>г. Москва, ул. Примерная, д. 123</span>
+                  <span>г. Санкт-Петербург, Седова 11</span>
                 </li>
               </ul>
             </div>
@@ -609,7 +609,7 @@ const Index = () => {
 
           <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © 2024 SecureWatch. Все права защищены.
+              © 2024 Securny. Все права защищены.
             </p>
             <div className="flex gap-6 text-sm text-gray-400">
               <a href="#" className="hover:text-primary transition-colors">Политика конфиденциальности</a>
