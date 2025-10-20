@@ -15,27 +15,60 @@ const Index = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setSubmitSuccess(true);
-    setFormData({ name: '', phone: '', message: '' });
-    setIsSubmitting(false);
-    
-    setTimeout(() => setSubmitSuccess(false), 5000);
+    try {
+      const response = await fetch('https://functions.poehali.dev/49fd8cf9-7011-40b3-b464-b25be639eb3a', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to send');
+      }
+      
+      setSubmitSuccess(true);
+      setFormData({ name: '', phone: '', message: '' });
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Ошибка отправки. Попробуйте позже.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleOrderSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setShowOrderModal(false);
-    setSubmitSuccess(true);
-    setOrderData({ name: '', phone: '', comment: '' });
-    setIsSubmitting(false);
-    
-    setTimeout(() => setSubmitSuccess(false), 5000);
+    try {
+      const response = await fetch('https://functions.poehali.dev/49fd8cf9-7011-40b3-b464-b25be639eb3a', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...orderData,
+          package: selectedPackage,
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to send');
+      }
+      
+      setShowOrderModal(false);
+      setSubmitSuccess(true);
+      setOrderData({ name: '', phone: '', comment: '' });
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Ошибка отправки. Попробуйте позже.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const openOrderModal = (packageName: string) => {
