@@ -7,6 +7,9 @@ const Index = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [showOrderModal, setShowOrderModal] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState('');
+  const [orderData, setOrderData] = useState({ name: '', phone: '', comment: '' });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -19,6 +22,25 @@ const Index = () => {
     setIsSubmitting(false);
     
     setTimeout(() => setSubmitSuccess(false), 5000);
+  };
+
+  const handleOrderSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setShowOrderModal(false);
+    setSubmitSuccess(true);
+    setOrderData({ name: '', phone: '', comment: '' });
+    setIsSubmitting(false);
+    
+    setTimeout(() => setSubmitSuccess(false), 5000);
+  };
+
+  const openOrderModal = (packageName: string) => {
+    setSelectedPackage(packageName);
+    setShowOrderModal(true);
   };
 
   return (
@@ -118,7 +140,7 @@ const Index = () => {
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-3xl font-bold text-gray-900">от 45 000 ₽</span>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90">
+                <Button onClick={() => openOrderModal('Комплект для офиса')} className="w-full bg-primary hover:bg-primary/90">
                   <Icon name="ShoppingCart" className="mr-2 h-4 w-4" />
                   Заказать комплект
                 </Button>
@@ -161,7 +183,7 @@ const Index = () => {
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-3xl font-bold text-gray-900">от 180 000 ₽</span>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90">
+                <Button onClick={() => openOrderModal('Комплект для склада')} className="w-full bg-primary hover:bg-primary/90">
                   <Icon name="ShoppingCart" className="mr-2 h-4 w-4" />
                   Заказать комплект
                 </Button>
@@ -254,7 +276,7 @@ const Index = () => {
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-3xl font-bold text-gray-900">от 120 000 ₽</span>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90">
+                <Button onClick={() => openOrderModal('Комплект для дома')} className="w-full bg-primary hover:bg-primary/90">
                   <Icon name="ShoppingCart" className="mr-2 h-4 w-4" />
                   Заказать комплект
                 </Button>
@@ -262,6 +284,57 @@ const Index = () => {
             </div>
           </Card>
         </div>
+
+        {showOrderModal && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setShowOrderModal(false)}>
+            <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-2xl font-bold text-gray-900">Заказ комплекта</h3>
+                <button onClick={() => setShowOrderModal(false)} className="text-gray-400 hover:text-gray-600">
+                  <Icon name="X" className="h-6 w-6" />
+                </button>
+              </div>
+              <p className="text-gray-600 mb-6">Комплект: <span className="font-semibold text-primary">{selectedPackage}</span></p>
+              <form onSubmit={handleOrderSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Имя</label>
+                  <input
+                    type="text"
+                    required
+                    value={orderData.name}
+                    onChange={(e) => setOrderData({...orderData, name: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Введите ваше имя"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
+                  <input
+                    type="tel"
+                    required
+                    value={orderData.phone}
+                    onChange={(e) => setOrderData({...orderData, phone: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="+7 (___) ___-__-__"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Комментарий (необязательно)</label>
+                  <textarea
+                    value={orderData.comment}
+                    onChange={(e) => setOrderData({...orderData, comment: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Дополнительная информация"
+                    rows={3}
+                  />
+                </div>
+                <Button type="submit" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary/90">
+                  {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+                </Button>
+              </form>
+            </div>
+          </div>
+        )}
 
         <div className="mt-20 mb-12">
           <div className="text-center mb-12">
