@@ -571,6 +571,221 @@ const Index = () => {
         </div>
 
         <div className="mt-20 mb-12">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">Обслуживание и модернизация</h2>
+            <p className="text-gray-600 text-lg">Улучшим вашу существующую систему безопасности</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="p-8 hover:shadow-xl transition-all border-2 hover:border-primary">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="RefreshCw" className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Модернизация старой системы</h3>
+                  <p className="text-gray-600">Обновим устаревшее оборудование до современных стандартов</p>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Диагностика текущей системы</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Подбор совместимого оборудования</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Сохранение существующих кабелей</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Настройка удалённого доступа</span>
+                </li>
+              </ul>
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600 mb-4">Стоимость рассчитывается индивидуально</p>
+                <Button onClick={() => openOrderModal('Модернизация системы')} className="w-full bg-primary hover:bg-primary/90">
+                  <Icon name="Phone" className="mr-2 h-4 w-4" />
+                  Получить консультацию
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="p-8 hover:shadow-xl transition-all border-2 hover:border-primary">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="Camera" className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Замена камер</h3>
+                  <p className="text-gray-600">Установим современные камеры с улучшенным качеством</p>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Камеры Full HD / 4K</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Улучшенная ночная съёмка</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Детекция движения и лиц</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Защита от непогоды IP67</span>
+                </li>
+              </ul>
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600 mb-4">От 5 000 ₽ за камеру с установкой</p>
+                <Button onClick={() => openOrderModal('Замена камер')} className="w-full bg-primary hover:bg-primary/90">
+                  <Icon name="Phone" className="mr-2 h-4 w-4" />
+                  Заказать замену
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="p-8 hover:shadow-xl transition-all border-2 hover:border-primary">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="Monitor" className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Замена видеорегистратора</h3>
+                  <p className="text-gray-600">Обновим мозг вашей системы видеонаблюдения</p>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Поддержка до 32 камер</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Запись в высоком разрешении</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Удалённый просмотр через интернет</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Архив до 6 месяцев</span>
+                </li>
+              </ul>
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600 mb-4">От 15 000 ₽ с настройкой</p>
+                <Button onClick={() => openOrderModal('Замена видеорегистратора')} className="w-full bg-primary hover:bg-primary/90">
+                  <Icon name="Phone" className="mr-2 h-4 w-4" />
+                  Заказать замену
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="p-8 hover:shadow-xl transition-all border-2 hover:border-primary">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="HardDrive" className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Замена жёсткого диска</h3>
+                  <p className="text-gray-600">Увеличим объём и срок хранения записей</p>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Диски от 1 ТБ до 10 ТБ</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Специализированные для видео</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Гарантия 3 года</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Перенос старых записей</span>
+                </li>
+              </ul>
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600 mb-4">От 6 000 ₽ за диск с установкой</p>
+                <Button onClick={() => openOrderModal('Замена жёсткого диска')} className="w-full bg-primary hover:bg-primary/90">
+                  <Icon name="Phone" className="mr-2 h-4 w-4" />
+                  Заказать замену
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="p-8 hover:shadow-xl transition-all border-2 hover:border-primary md:col-span-2">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Icon name="Maximize2" className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Повышение чёткости картинки</h3>
+                  <p className="text-gray-600">Улучшим качество изображения без полной замены системы</p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3">Что включает услуга:</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-3">
+                      <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Настройка резкости и контраста</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Оптимизация освещения</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Проверка фокусировки камер</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3">Результат работы:</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-3">
+                      <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Чёткая картинка днём и ночью</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Различимы лица и номера</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Icon name="CheckCircle2" className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Улучшенная детализация</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm text-gray-600">От 3 000 ₽ за выезд</p>
+                  <p className="text-xs text-gray-500 mt-1">Настройка всех камер на объекте</p>
+                </div>
+                <Button onClick={() => openOrderModal('Повышение чёткости')} className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
+                  <Icon name="Phone" className="mr-2 h-4 w-4" />
+                  Заказать услугу
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        <div className="mt-20 mb-12">
           <Card className="overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-10 lg:p-12 text-white">
